@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Điểm trung bình</title>
+</head>
+<body>
+<script>
+    let phyScoreInput = prompt("Nhập điểm môn Vật lý:", "10");
+    let cheScoreInput = prompt("Nhập điểm môn Hóa học:", "10");
+    let bioScoreInput = prompt("Nhập điểm môn Sinh học:", "10");
+
+    let phyScore = parseInt(phyScoreInput);
+    let cheScore = parseInt(cheScoreInput);
+    let bioScore = parseInt(bioScoreInput);
+
+    let sumScore = phyScore + cheScore + bioScore;
+    let averageScore = sumScore / 3;
+s
+    document.write('Vật lý: ' + phyScore);
+    document.write('<br>');
+    document.write('Hóa học: ' + cheScore);
+    document.write('<br>');
+    document.write('Sinh học: ' + bioScore);
+    document.write('<br>');
+    document.write('Tổng điểm: ' + sumScore);
+    document.write('<br>');
+    document.write('Trung bình: ' + averageScore);
+
+</script>
+</body>
+</html>
