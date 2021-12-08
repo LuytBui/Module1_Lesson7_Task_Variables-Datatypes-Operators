@@ -3,30 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Điểm trung bình</title>
+    <style>
+        th{
+            text-align:left;
+        }
+    </style>
 </head>
 <body>
+
+<table>
+    <tr>
+        <th>Điểm Vật lý:</th>
+        <td><input type="number" id="phyScore" placeholder="Nhập điểm..."></td>
+    </tr>
+    <tr>
+        <th>Điểm Hóa học:</th>
+        <td><input type="number" id="cheScore" placeholder="Nhập điểm..."></td>
+    </tr>
+    <tr>
+        <th>Điểm Sinh học:</th>
+        <td><input type="number" id="bioScore" placeholder="Nhập điểm..."></td>
+    </tr>
+    <tr>
+        <th>Tổng điểm:</th>
+        <td><textarea readonly name="" id="sumScore" cols="5" rows="1"></textarea></td>
+    </tr>
+    <tr>
+        <th>Trung bình:</th>
+        <td><textarea readonly name="" id="averageScore" cols="5" rows="1"></textarea></td>
+    </tr>
+</table>
+
+
 <script>
-    let phyScoreInput = prompt("Nhập điểm môn Vật lý:", "10");
-    let cheScoreInput = prompt("Nhập điểm môn Hóa học:", "10");
-    let bioScoreInput = prompt("Nhập điểm môn Sinh học:", "10");
+    let phyScore=0, cheScore=0, bioScore=0, sumScore=0, averageScore=0;
 
-    let phyScore = parseInt(phyScoreInput);
-    let cheScore = parseInt(cheScoreInput);
-    let bioScore = parseInt(bioScoreInput);
+    let phyScoreInputElement = document.getElementById("phyScore");
+    let cheScoreInputElement = document.getElementById("cheScore");
+    let bioScoreInputElement = document.getElementById("bioScore");
+    let sumScoreTextElement = document.getElementById("sumScore");
+    let averageScoreTextElement = document.getElementById("averageScore");
 
-    let sumScore = phyScore + cheScore + bioScore;
-    let averageScore = sumScore / 3;
-s
-    document.write('Vật lý: ' + phyScore);
-    document.write('<br>');
-    document.write('Hóa học: ' + cheScore);
-    document.write('<br>');
-    document.write('Sinh học: ' + bioScore);
-    document.write('<br>');
-    document.write('Tổng điểm: ' + sumScore);
-    document.write('<br>');
-    document.write('Trung bình: ' + averageScore);
+    phyScoreInputElement.addEventListener("change", updateResults);
+    cheScoreInputElement.addEventListener("change", updateResults);
+    bioScoreInputElement.addEventListener("change", updateResults);
 
+    function updateResults(){
+        phyScore = parseFloat(phyScoreInputElement.value);
+        cheScore = parseFloat(cheScoreInputElement.value);
+        bioScore = parseFloat(bioScoreInputElement.value);
+
+        // phyScore = (physcore=NaN) ? 0 : phyScore;
+        // cheScore = (cheScore=NaN) ? 0 : cheScore;
+        // bioScore = (bioScore=NaN) ? 0 : bioScore;
+
+        sumScore = phyScore + cheScore + bioScore;
+        averageScore = sumScore / 3;
+
+        sumScoreTextElement.innerText = sumScore;
+        averageScoreTextElement.innerText = averageScore;
+    }
 </script>
 </body>
 </html>

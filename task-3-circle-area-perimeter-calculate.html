@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diện tích hình tròn</title>
+    <style>
+        th{
+            text-align:left;
+        }
+        .description{
+            font-size:75%;
+        }
+    </style>
+</head>
+<body>
+<p><strong>Tính diện tích hình tròn</strong></p>
+<p class="description">Theo bán kính hoặc đường kính</p>
+<table>
+    <tr>
+        <th>Bán kính:</th>
+        <td><input type="number" id="radius"> </td>
+    </tr>
+    <tr>
+        <th>Đường kính:</th>
+        <td><input type="number" id="diameter"> </td>
+    </tr>
+    <tr>
+        <th>Chu vi:</th>
+        <td><textarea readonly name="" id="area" cols="10" rows="1"></textarea></td>
+    </tr>
+    <tr>
+        <th>Diện tích:</th>
+        <td><textarea readonly name="" id="perimeter" cols="10" rows="1"></textarea></td>
+    </tr>
+</table>
+
+<script>
+    let radiusInputElement = document.getElementById("radius");
+    let diameterInputElement = document.getElementById("diameter");
+    let areaTextElement = document.getElementById("area");
+    let perimeterTextElement = document.getElementById("perimeter");
+    let radius=0, diameter=0, area=0, perimeter=0;
+
+    radiusInputElement.addEventListener("click", clickRadius);
+    diameterInputElement.addEventListener("click", clickDiameter);
+
+    radiusInputElement.addEventListener("change", inputRadius);
+    diameterInputElement.addEventListener("change", inputDiameter);
+
+
+    function clickRadius(){
+        diameterInputElement.value = "";
+        diameterInputElement.disable=true;
+        areaTextElement.innerText = "";
+        perimeterTextElement.innerText = "";
+    }
+    function clickDiameter(){
+        radiusInputElement.value = "";
+        radiusInputElement.disable=true;
+        areaTextElement.innerText = "";
+        perimeterTextElement.innerText = "";
+    }
+
+    function inputRadius(){
+        radius = radiusInputElement.value;
+        diameter = radius * 2;
+        diameterInputElement.value = diameter;
+        calculate();
+    }
+    function inputDiameter(){
+        diameter = diameterInputElement.value;
+        radius = diameter / 2;
+        radiusInputElement.value = radius;
+        calculate();
+    }
+    function calculate(){
+        area = Math.PI * radius * radius;
+        perimeter = Math.PI * diameter;
+        areaTextElement.innerText = area;
+        perimeterTextElement.innerText = perimeter;
+        radiusInputElement.disable=false;
+        diameterInputElement.disable=false;
+    }
+</script>
+
+</body>
+</html>

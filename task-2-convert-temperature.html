@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Convert °C to °F</title>
+</head>
+<body>
+<h4>Đổi nhiệt độ từ °C sang °F</h4>
+<table>
+    <tr>
+        <th>Độ °C:</th>
+        <td><input type="number" id="CDegree" </td>
+    </tr>
+    <tr>
+        <th>Độ °F:</th>
+        <td><textarea readonly name="" id="FDegree" cols="10" rows="1"></textarea></td>
+    </tr>
+</table>
+<button onclick="convert()">Chuyển!</button>
+
+<script>
+    let CDegreeInputElemet = document.getElementById("CDegree");
+    let FDegreeInputElemet = document.getElementById("FDegree");
+    let CDegree, FDegree;
+
+    CDegreeInputElemet.addEventListener("click", newTask);
+
+    function convert(){
+        CDegree = CDegreeInputElemet.value;
+
+        /*      C/5 = (F-32)/9      */
+        /*      F = 32+ C*9/5      */
+        FDegree = 32 + CDegree * 9 / 5;
+        FDegreeInputElemet.innerText = FDegree;
+    }
+    function newTask(){
+        FDegreeInputElemet.innerText = "";
+    }
+
+</script>
+</body>
+</html>
